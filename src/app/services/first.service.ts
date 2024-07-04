@@ -26,4 +26,8 @@ export class FirstService {
   getStudents(){
     return this.students;
   }
+
+  resetStudents(){
+    this.students = [];
+  }
 }

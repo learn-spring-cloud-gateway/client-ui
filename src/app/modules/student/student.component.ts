@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {FirstService} from "../../services/first.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {FirstService} from "../../services/first.service";
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss']
 })
-export class StudentComponent {
+export class StudentComponent implements OnDestroy {
 
   constructor(private firstService: FirstService) {
   }
@@ -18,5 +18,9 @@ export class StudentComponent {
 
   displayStudent() {
     return this.firstService.getStudents()
+  }
+
+  ngOnDestroy() {
+    this.firstService.resetStudents();
   }
 }
