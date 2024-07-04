@@ -1,0 +1,14 @@
+<div>
+  <button (click)="onProtectedEndpoint()">Protected</button>
+</div>
+
+<div *ngIf="displayStudent().length === 0">
+  <p>No students to display</p>
+</div>
+
+<div *ngIf="displayStudent().length > 0">
+  <div *ngFor="let student of displayStudent()">
+    <p>{{student.id}}</p>
+    <p>{{student.name}}</p>
+  </div>
+</div>
