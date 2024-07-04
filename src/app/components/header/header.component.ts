@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {FirstService} from "../../services/first.service";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,32 @@ import {AuthService} from "../../services/auth.service";
 })
 export class HeaderComponent {
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private firstService: FirstService
+  ) {
   }
 
-  onClick(){
+  onLogin() {
     console.log("login")
     this.authService.login()
+  }
+
+  onLogout() {
+    console.log("logout")
+    this.authService.logout()
+  }
+
+  onProtectedEndpoint() {
+    console.log("protected")
+    this.firstService.getSomethingFromServiceOne()
+  }
+
+  displayToken() {
+    return this.authService.getToken() != null ? this.authService.getToken() : "null"
+  }
+
+  displayStudent() {
+    return this.firstService.getStudents()
   }
 }

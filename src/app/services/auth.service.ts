@@ -10,12 +10,9 @@ interface AuthResponse{
   providedIn: 'root'
 })
 export class AuthService {
-
-  //private baseUrl = '/api';
-
   constructor(private http : HttpClient) { }
 
-  token: string = "";
+  token: string | null = null;
 
   login() {
     return this.http.get<AuthResponse>(environment.apiURL +"/login").subscribe(
@@ -23,8 +20,11 @@ export class AuthService {
     );
   }
 
+  logout(){
+    this.token = null
+  }
+
   getToken(){
-    console.log(this.token)
     return this.token
   }
 }

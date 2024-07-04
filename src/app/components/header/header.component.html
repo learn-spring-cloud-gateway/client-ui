@@ -1,3 +1,30 @@
 <div>
-  <button (click)="onClick()">Login</button>
+  <button (click)="onLogin()">Login</button>
+</div>
+
+<div>
+  <button (click)="onLogout()">Logout</button>
+</div>
+
+<div>
+  <button (click)="onProtectedEndpoint()">Protected</button>
+</div>
+
+<hr>
+
+<div>
+  <p>{{displayToken()}}</p>
+</div>
+
+<hr>
+
+<div *ngIf="displayStudent().length === 0">
+  <p>No students to display</p>
+</div>
+
+<div *ngIf="displayStudent().length > 0">
+  <div *ngFor="let student of displayStudent()">
+    <p>{{student.id}}</p>
+    <p>{{student.name}}</p>
+  </div>
 </div>
